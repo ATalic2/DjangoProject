@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+env/
+ENV/
+*.env
+
+# Django specific
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Coverage, testing, build
+htmlcov/
+.coverage
+.tox/
+.nox/
+*.egg-info/
+dist/
+build/
+
+# Swagger/Postman
+*.postman_collection.json
+swagger.json
