@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
+from rest_framework.request import Request
+from rest_framework.response import Response
 from ..serializers import MerchantSerializer
 
 logger = logging.getLogger(__name__)
@@ -13,7 +15,7 @@ class MerchantPostView(APIView):
             return [IsAdminUser()]
         return super().get_permissions()
     
-    def post(self, request):
+    def post(self, request: Request) -> Response:
         try:
             serializer = MerchantSerializer(data=request.data)
             if serializer.is_valid():

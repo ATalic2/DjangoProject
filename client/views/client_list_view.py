@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.request import Request
+from rest_framework.response import Response
 from ..models import Client
 from ..serializers import ClientSerializer
 
@@ -14,7 +16,7 @@ class ClientListView(APIView):
             return [IsAuthenticated()]
         return super().get_permissions()
     
-    def get(self, request):
+    def get(self, request: Request) -> Response:
         try:
             logger.info("Received GET request for Client list")
             clients = Client.objects.all()

@@ -1,6 +1,7 @@
 from django.db import migrations
+from django.db.backends.base.schema import BaseDatabaseSchemaEditor
 
-def create_initial_merchants(apps, schema_editor):
+def create_initial_merchants(apps, schema_editor: BaseDatabaseSchemaEditor):
     Merchant = apps.get_model('merchant', 'Merchant')
     Merchant.objects.create(name='Amazon')
     Merchant.objects.create(name='eBay')
