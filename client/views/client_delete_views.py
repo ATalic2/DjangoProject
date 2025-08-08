@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
+from rest_framework.request import Request
+from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from ..models import Client
@@ -15,7 +17,7 @@ class ClientDeleteView(APIView):
             return [IsAdminUser()]
         return super().get_permissions()
     
-    def delete(self, request, pk):
+    def delete(self, request: Request, pk: int) -> Response:
         try:
             logger.info(f"Attempting to delete Client with id={pk}")
             client = get_object_or_404(Client, pk=pk)

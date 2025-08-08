@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.request import Request
+from rest_framework.response import Response
 from ..models import Merchant
 from ..serializers import MerchantSerializer
 
@@ -14,7 +16,7 @@ class MerchantListView(APIView):
             return [IsAuthenticated()]
         return super().get_permissions()
     
-    def get(self, request):
+    def get(self, request: Request) -> Response:
         try:
             logger.info("Fetching all merchants")
             merchants = Merchant.objects.all()

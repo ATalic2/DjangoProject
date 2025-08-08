@@ -1,6 +1,7 @@
 from django.db import migrations
+from django.db.backends.base.schema import BaseDatabaseSchemaEditor
 
-def create_initial_clients(apps, schema_editor):
+def create_initial_clients(apps, schema_editor: BaseDatabaseSchemaEditor):
     Client = apps.get_model('client', 'Client')
     Merchant = apps.get_model('merchant', 'Merchant')
     Client.objects.create(firstName='TestName1', lastName='TestSurname1', job='Job1', merchant=Merchant.objects.get(id=1))

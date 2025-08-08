@@ -1,8 +1,9 @@
 import os
 import subprocess
 import platform
+from typing import List, Union
 
-def run_command(command, shell=False):
+def run_command(command: Union[str, List[str]], shell: bool = False) -> None:
     print(f"Running: {command}")
     subprocess.run(command, shell=shell, check=True)
 

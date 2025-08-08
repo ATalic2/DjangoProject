@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
+from rest_framework.request import Request
+from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from ..models import Client
@@ -16,7 +18,7 @@ class ClientPatchView(APIView):
             return [IsAdminUser()]
         return super().get_permissions()
 
-    def patch(self, request):
+    def patch(self, request: Request) -> Response:
         client_id = request.data.get('id')
         if not client_id:
             logger.warning("PATCH called without client id in request data")
